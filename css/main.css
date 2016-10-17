@@ -4,7 +4,23 @@
    Author's custom styles
    ========================================================================== */
 
-
+.container-fluid {
+    padding-top: 50px; 
+    padding-bottom: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.carousel-inner img { 
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+.carousel-control { 
+	background: none !important; 
+	filter: none !important; 
+	progid:none !important; 
+} 
 
 
 
