@@ -5,10 +5,10 @@
    ========================================================================== */
 
 .container-fluid {
-    padding-top: 50px; 
-    padding-bottom: 20px;
-    padding-right: 25px;
-    padding-left: 25px;
+    padding-top: 80px; 
+    padding-bottom: 60px;
+    padding-right: 50px;
+    padding-left: 50px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -21,10 +21,13 @@
 	filter: none !important; 
 	progid:none !important; 
 } 
+  .container-contact {
+      padding: 80px 120px;
+}
 
-
-
-
+ .btn-1 {
+      padding: 10px 20px;
+}
 
 
 
