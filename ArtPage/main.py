@@ -5,13 +5,14 @@ ADDITIVE_FOR_UID = 1000
 
 CSRF_ENABLED = True
 SECRET_KEY = 'I-hate-secret-keys'
+
 # email server
 MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USE_TLS = False
 MAIL_USE_SSL = True
-MAIL_USERNAME = 'login'
-MAIL_PASSWORD = 'password'
+MAIL_USERNAME = 'golovkot.artpage@gmail.com'
+MAIL_PASSWORD = 'artpassword666'
 
 try:
     from os import getuid
@@ -20,7 +21,7 @@ except ImportError:
     def getuid():
         return DEFAULT_PORT - ADDITIVE_FOR_UID
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,jsonify
 from flask.ext.mail import Mail
 from threading import Thread
 from flask.ext.mail import Message
@@ -55,12 +56,17 @@ def index():
 
 @app.route('/Feedback', methods=['POST'])
 def Feedback():
+    """form_result = request.get_json(cache=True, force=True)
+    name = form_result['name']
+    email = form_result['email']
+    comments = form_result['comments']"""
     name = request.form.get('name')
     email = request.form.get('email')
     comments = request.form.get('comments')
     send_comment(name, email, comments)
 
     return redirect(url_for('index'))
+#jsonify({'status' : 'OK'})
 
 if __name__ == '__main__':
     app.run(port=getuid() + ADDITIVE_FOR_UID, debug=True)

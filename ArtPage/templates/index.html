@@ -141,7 +141,7 @@
       </div>
     </div>
     <!-- Contact block -->
-    <form action='\Feedback' method='post'>
+    <form action='\Feedback' id="submit-form" method='post'>
         <div class="container-contact">
             <h2 id="feedback" class="text-center">Обратная связь</h2>
             <p class="text-center">Вы можете связаться со мной, заполнив форму ниже.</p>
@@ -172,10 +172,8 @@
       </footer>
     </div> <!-- /container -->        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
         <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
-
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-		<script src="{{ url_for('static', filename='js/SmoothScroll.js') }}"></script>
+		    <script src="{{ url_for('static', filename='js/SmoothScroll.js') }}"></script>
     </body>
 </html>
