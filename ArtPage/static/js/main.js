@@ -1,16 +1,19 @@
-$(function() {
-    $(document).on('submit', '#submit-form', function(e) {
-        $.ajax({
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            type: 'POST',
-            success: function(html) {
-                $(this).clearForm();
-                alert('Ваше сообщение отправлено!')
-            },
-                    });
-    });
-    e.preventDefault();
-});
 
-  
+$(document).ready(function() {
+    $("#submit-form").submit(function() {
+        var form = $(this);
+        var error = false;
+        var data = form.serialize();
+        $.ajax({
+            type: 'POST',
+            url: '/Feedback',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                $('#submit-form')[0].reset();
+                alert('Ваше сообщение, мать вашу, отправлено!');
+            },
+        });
+        return false;
+    });
+});  

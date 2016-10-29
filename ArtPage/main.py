@@ -11,8 +11,8 @@ MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USE_TLS = False
 MAIL_USE_SSL = True
-MAIL_USERNAME = 'golovkot.artpage@gmail.com'
-MAIL_PASSWORD = 'artpassword666'
+MAIL_USERNAME = 'log'
+MAIL_PASSWORD = 'pass'
 
 try:
     from os import getuid
@@ -30,6 +30,7 @@ def send_async_email(msg):
     with app.app_context():
         mail.send(msg)
 
+
 def send_email(subject, sender, recipients, text_body):
     msg = Message(subject, sender = sender, recipients = [recipients])
     msg.body = text_body
@@ -37,11 +38,13 @@ def send_email(subject, sender, recipients, text_body):
     thr = Thread(target = send_async_email, args = [msg])
     thr.start()
 
+
 def send_comment(name, email, comments):
     subject = 'ArtPage Feedback'
     recipients = 'altago@mail.ru'
     text_body = "sender: "+str(name)+"\n e-mail: "+str(email)+"\n Message: "+str(comments)
     send_email(subject, MAIL_USERNAME, recipients, text_body)
+
 
 mail = Mail()
 
@@ -56,17 +59,12 @@ def index():
 
 @app.route('/Feedback', methods=['POST'])
 def Feedback():
-    """form_result = request.get_json(cache=True, force=True)
-    name = form_result['name']
-    email = form_result['email']
-    comments = form_result['comments']"""
     name = request.form.get('name')
     email = request.form.get('email')
     comments = request.form.get('comments')
     send_comment(name, email, comments)
 
-    return redirect(url_for('index'))
-#jsonify({'status' : 'OK'})
+    return jsonify({'status' : 'OK'})
 
 if __name__ == '__main__':
     app.run(port=getuid() + ADDITIVE_FOR_UID, debug=True)
