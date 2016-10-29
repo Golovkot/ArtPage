@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     $("#submit-form").submit(function() {
         var form = $(this);
@@ -11,7 +10,7 @@ $(document).ready(function() {
             data: data,
             success: function(data) {
                 $('#submit-form')[0].reset();
-                alert('Ваше сообщение, мать вашу, отправлено!');
+                alert('Ваше сообщение отправлено!');
             },
         });
         return false;
